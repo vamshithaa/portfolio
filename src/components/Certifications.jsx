@@ -1,4 +1,4 @@
-import { FiAward } from 'react-icons/fi';
+import { FiAward, FiCheckCircle } from 'react-icons/fi';
 import './Certifications.css';
 
 const certifications = [
@@ -36,13 +36,22 @@ export default function Certifications() {
         <div className="certifications__grid">
           {certifications.map((cert, i) => (
             <div className="certifications__card" key={i} style={{ animationDelay: `${i * 0.08}s` }}>
-              <div className="certifications__icon">
-                <FiAward size={20} />
-              </div>
-              <div>
-                <h3 className="certifications__title">{cert.title}</h3>
-                <p className="certifications__issuer">{cert.issuer}</p>
-                <span className="certifications__date">{cert.date}</span>
+              <div className="certifications__card-inner">
+                <div className="certifications__card-face certifications__card-front">
+                  <div className="certifications__icon">
+                    <FiAward size={20} />
+                  </div>
+                  <div>
+                    <h3 className="certifications__title">{cert.title}</h3>
+                    <p className="certifications__issuer">{cert.issuer}</p>
+                  </div>
+                </div>
+                <div className="certifications__card-face certifications__card-back">
+                  <FiCheckCircle size={26} className="certifications__check" />
+                  <span className="certifications__verified">Verified Credential</span>
+                  <span className="certifications__date">{cert.date}</span>
+                  <span className="certifications__issuer-back">{cert.issuer}</span>
+                </div>
               </div>
             </div>
           ))}

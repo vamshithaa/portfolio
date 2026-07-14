@@ -46,14 +46,21 @@ export default function Skills() {
         <div className="skills__grid">
           {skillGroups.map((group, i) => (
             <div className="skills__card" key={i} style={{ animationDelay: `${i * 0.08}s` }}>
-              <div className="skills__card-header">
-                <span className="skills__icon">{group.icon}</span>
-                <h3>{group.title}</h3>
-              </div>
-              <div className="skills__tags">
-                {group.items.map((item, j) => (
-                  <span className="skills__tag" key={j}>{item}</span>
-                ))}
+              <div className="skills__card-inner">
+                <div className="skills__card-face skills__card-front">
+                  <span className="skills__icon">{group.icon}</span>
+                  <h3>{group.title}</h3>
+                  <span className="skills__count">{group.items.length} skills</span>
+                  <span className="skills__hint">hover to view</span>
+                </div>
+                <div className="skills__card-face skills__card-back">
+                  <h3>{group.title}</h3>
+                  <div className="skills__tags">
+                    {group.items.map((item, j) => (
+                      <span className="skills__tag" key={j}>{item}</span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           ))}

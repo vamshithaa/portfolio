@@ -5,35 +5,80 @@
 }
 
 .skills__card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius);
-  padding: 22px;
-  transition: transform var(--transition), border-color var(--transition);
+  perspective: 1200px;
+  height: 190px;
   animation: hero-rise 0.6s ease both;
 }
 
-.skills__card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent-primary-dim);
+.skills__card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
 }
 
-.skills__card-header {
+.skills__card:hover .skills__card-inner {
+  transform: rotateY(180deg);
+}
+
+.skills__card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  padding: 22px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.skills__card:hover .skills__card-face {
+  border-color: var(--accent-primary-dim);
+  box-shadow: var(--shadow-md);
+}
+
+.skills__card-front {
+  align-items: flex-start;
+  justify-content: center;
   gap: 10px;
-  margin-bottom: 16px;
+}
+
+.skills__card-back {
+  transform: rotateY(180deg);
+  justify-content: center;
+  gap: 14px;
+  background: var(--bg-surface-hover);
 }
 
 .skills__icon {
   color: var(--accent-primary);
-  font-size: 1.1rem;
+  font-size: 1.8rem;
   display: flex;
+  margin-bottom: 4px;
 }
 
-.skills__card-header h3 {
-  font-size: 1rem;
+.skills__card-front h3,
+.skills__card-back h3 {
+  font-size: 1.05rem;
   color: var(--text-primary);
+}
+
+.skills__count {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.skills__hint {
+  margin-top: auto;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-secondary);
+  opacity: 0.7;
 }
 
 .skills__tags {

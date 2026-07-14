@@ -47,6 +47,8 @@ export default function Hero() {
 
   return (
     <section id="hero" className="hero">
+      <div className="hero__glow hero__glow--one" aria-hidden="true" />
+      <div className="hero__glow hero__glow--two" aria-hidden="true" />
       <div className="hero__inner">
         <div className="hero__terminal">
           <div className="hero__terminal-bar">
